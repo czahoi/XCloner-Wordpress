@@ -1,10 +1,6 @@
-/docs
-/node_modules
-/.github
-/.git
-
-package.json
-package-lock.json
-
-.distignore
-.gitignore
+/vendor/**.md
+/vendor/**tests/
+/vendor/bin/
+/admin/js/index.js
+/admin/js/xcloner*
+/admin/js/materialize.min.js

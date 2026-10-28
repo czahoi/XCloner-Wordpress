@@ -1,0 +1,20 @@
+name: Deploy to WordPress.org
+on: workflow_dispatch
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@master
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: composer
+      - name: Execute script to deploy on WordPress.org
+        run: |
+          sudo apt-get update && sudo apt-get install -y subversion
+          ${{ github.workspace }}/.github/workflows/deploy-wp.sh
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
